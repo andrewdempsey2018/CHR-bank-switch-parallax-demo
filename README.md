@@ -1,4 +1,3 @@
-# Nes game
+# Nes paralax demo
 
-
-STACK
+Demo of NES 6502 CHR bank switching which produces a parallax effect
