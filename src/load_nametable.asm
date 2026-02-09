@@ -15,11 +15,11 @@
   pha
 
 
-  lda $2002             ; read PPU status to reset the high/low latch
+  lda PPUSTATUS             ; read PPU status to reset the high/low latch
   lda nametableAddress
-  sta $2006             ; write the high byte of $2000 address
+  sta PPUADDR             ; write the high byte of $2000 address
   lda #$00
-  sta $2006             ; write the low byte of $2000 address
+  sta PPUADDR             ; write the low byte of $2000 address
 
   ldx #$00
   ldy #$00
@@ -28,7 +28,7 @@ OutsideLoop:
 InsideLoop:
 
   lda (pointer), y       ;
-  sta $2007             ; write to PPU
+  sta PPUDATA           ; write to PPU
   iny
   cpy #0
   bne InsideLoop
