@@ -119,10 +119,22 @@ vblankwait:       ; wait for another vblank before continuing
   bpl vblankwait
 
 mainloop:
+  inc timer
+  lda timer
+  cmp #4
+  bne :+
+
+  lda #0
+  sta timer
 
   inc bank_no
   lda bank_no
   sta BANK_SWITCH
+  cmp #$04
+  bne :+
+  lda #$00
+  sta bank_no
+:
 
 DontBank:
 
