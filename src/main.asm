@@ -130,7 +130,7 @@ mainloop:
   inc bank_no
   lda bank_no
   sta BANK_SWITCH
-  cmp #$04
+  cmp #$03
   bne :+
   lda #$00
   sta bank_no
