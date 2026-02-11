@@ -161,18 +161,18 @@ sleep:
 .segment "RODATA"
 
 palettes:
-  ; background
-  .byte $21,$10,$0f,$30
-  .byte $21,$01,$21,$31
-  .byte $21,$06,$16,$26
+; background
+  .byte $21,$10,$16,$30
+  .byte $21,$2d,$10,$30
+  .byte $21,$0f,$23,$30
   .byte $21,$0f,$19,$29
 
-
-  ; sprites
-  .byte $21,$10,$0f,$30
-  .byte $21,$01,$21,$31
-  .byte $21,$06,$16,$26
+; sprites
+  .byte $21,$10,$16,$30
+  .byte $21,$2d,$10,$30
+  .byte $21,$0f,$23,$30
   .byte $21,$0f,$19,$29
+
 
 .include "level1.asm"
 
