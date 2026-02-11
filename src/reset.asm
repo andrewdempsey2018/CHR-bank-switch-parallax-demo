@@ -31,6 +31,11 @@ clear_oam:
   lda #$00
   sta timer
   sta bank_no
+  sta car_x
+  sta car_frame
+
+  lda #195
+  sta car_y
 
   ldx #$20
   stx nametableAddress

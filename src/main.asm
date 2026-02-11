@@ -3,6 +3,8 @@
 .include "reset.asm"
 .include "load_nametable.asm"
 .include "controllers.asm"
+.include "car.asm"
+.include "clouds.asm"
 
 .segment "ZEROPAGE"
 nametableAddress: .res 1
@@ -119,6 +121,8 @@ vblankwait:       ; wait for another vblank before continuing
   bpl vblankwait
 
 mainloop:
+; ----------------------------------- ;
+; handle back switch
   inc timer
   lda timer
   cmp #4
@@ -137,6 +141,11 @@ mainloop:
 :
 
 DontBank:
+; ----------------------------------- ;
+
+  jsr DrawCar
+  jsr DrawClouds
+  inc car_x
 
 done:
   ;loop
