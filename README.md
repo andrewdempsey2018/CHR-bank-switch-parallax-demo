@@ -1,7 +1,7 @@
 # Nes paralax demo
 
-Demo of NES 6502 CHR bank switching which produces a parallax effect
+Demo of NES 6502 CHR bank switching which produces a parallax effect.
 
-![alt text](./images/image.png)
+Demo.nes will run on any NES emulator.
 
-![alt text](./images/image-1.png)
+![alt text](image.png)

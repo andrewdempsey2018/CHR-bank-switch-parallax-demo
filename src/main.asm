@@ -5,6 +5,7 @@
 .include "controllers.asm"
 .include "car.asm"
 .include "clouds.asm"
+.include "lib/famitone5.s"
 
 .segment "ZEROPAGE"
 nametableAddress: .res 1
@@ -120,6 +121,16 @@ vblankwait:       ; wait for another vblank before continuing
   bit PPUSTATUS
   bpl vblankwait
 
+  ; setup music
+  ldx #<song1_music_data ;low
+  ldy #>song1_music_data ;high
+  lda #0 ;NTSC = 1, PAL = 0
+  jsr FamiToneInit
+
+  ; start music
+  lda #$00 ; before we play music, set the song number to song 0
+  jsr FamiToneMusicPlay
+
 mainloop:
 ; ----------------------------------- ;
 ; handle back switch
@@ -130,6 +141,7 @@ mainloop:
 
   lda #0
   sta timer
+  inc car_x
 
   inc bank_no
   lda bank_no
@@ -145,7 +157,7 @@ DontBank:
 
   jsr DrawCar
   jsr DrawClouds
-  inc car_x
+  jsr FamiToneUpdate
 
 done:
   ;loop
@@ -168,6 +180,7 @@ sleep:
 .incbin "graphics5.chr"
 
 .segment "RODATA"
+.include "song1.s"
 
 palettes:
 ; background
